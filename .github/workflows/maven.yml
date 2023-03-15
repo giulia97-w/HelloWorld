@@ -31,7 +31,7 @@ jobs:
       run: |
           cd src/main/java
           mvn clean install
-    - name: SonarCloud Scan
+    - name: SonarCloud 
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
