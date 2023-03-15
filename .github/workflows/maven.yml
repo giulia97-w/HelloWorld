@@ -34,6 +34,10 @@ jobs:
           # Set MAVEN_OPTS to ensure that Jacoco is enabled
           MAVEN_OPTS="-Djacoco.destFile=jacoco.exec"
           mvn jacoco:report
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Build with Maven
         run: |
