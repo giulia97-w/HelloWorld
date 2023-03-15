@@ -23,7 +23,7 @@ jobs:
           cache: maven
       - name: Build and test with Jacoco
         run: |
-          cd src/main/java/com/example
+          cd src/test
           mvn clean verify
           # Set MAVEN_OPTS to ensure that Jacoco is enabled
           MAVEN_OPTS="-Djacoco.destFile=jacoco.exec"
