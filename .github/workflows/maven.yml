@@ -22,7 +22,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build and test with Jacoco
-        run: mvn clean verify
+        run: |
+          cd src/main/java/com/example
+          mvn clean verify
         env:
           JAVA_HOME: ${{ matrix.java-version }}
           # Set MAVEN_OPTS to ensure that Jacoco is enabled
