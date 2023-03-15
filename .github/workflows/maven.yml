@@ -31,10 +31,9 @@ jobs:
       run: |
           cd src/main/java
           mvn clean install
-    - name: Analyze with SonarQube
-      uses: sonarsource/sonarcloud-github-action@v2
-      with:
-        organization: giulia97-w
-        projectKey: giulia97-w_HelloWorld
-        token: ${{ secrets.SONAR_TOKEN }}
+    - name: Build and analyze
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=giulia97-w_HelloWorld -P coverage
  
