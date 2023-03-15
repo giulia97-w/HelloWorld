@@ -21,15 +21,18 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
-      - name: Run tests and generate Jacoco report
+      - name: Run Coverage
         run: |
-          cd src/main/java/com/example
-          mvn jacoco:report
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+          chmod +x gradlew
+          ./gradlew testCoverage
+
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./target/site/jacoco/jacoco.xml
+          paths: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
