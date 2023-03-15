@@ -29,7 +29,7 @@ jobs:
       
       - name: Build and test with Jacoco
         run: |
-          cd src/test/java
+          cd src/main/java/com/example
           mvn clean verify
           # Set MAVEN_OPTS to ensure that Jacoco is enabled
           MAVEN_OPTS="-Djacoco.destFile=jacoco.exec"
