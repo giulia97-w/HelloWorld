@@ -37,7 +37,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
-        organization: 'giulia97-w'
-        projectKey: 'giulia97-w_HelloWorld'
+        sonar.organization: 'giulia97-w'
+        sonar.projectKey: 'giulia97-w_HelloWorld'
 
  
