@@ -21,6 +21,18 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
+      - name: Build and test with Jacoco
+        run: mvn clean verify
+        env:
+          JAVA_HOME: ${{ matrix.java-version }}
+          # Set MAVEN_OPTS to ensure that Jacoco is enabled
+          MAVEN_OPTS: -Djacoco.destFile=jacoco.exec
+      - name: Upload Jacoco coverage report
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          file: jacoco.xml
+          flags: unittests
+          name: codecov-umbrella
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
