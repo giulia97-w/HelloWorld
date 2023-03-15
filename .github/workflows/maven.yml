@@ -32,12 +32,9 @@ jobs:
           cd src/main/java
           mvn clean install
     - name: SonarCloud 
-      uses: sonarsource/sonarcloud-github-action@master
+      run: sonar-scanner -Dsonar.organization=giulia97-w -Dsonar.projectKey=giulia97-w_HelloWorld -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      with:
-        sonar.organization: 'giulia97-w'
-        sonar.projectKey: 'giulia97-w_HelloWorld'
 
  
