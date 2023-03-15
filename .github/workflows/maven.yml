@@ -28,5 +28,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Build with Maven
         run: |
-          cd src/main/java
+          cd src/main/java/com/example
           mvn clean install
